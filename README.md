@@ -8,9 +8,9 @@
 
 **:arrow_double_down: [iOS 海外商店版本](https://apps.apple.com/us/app/auto-vpn/id6478515858)**
 
-**:arrow_double_down: [Windows 版本.exe](https://github.com/shendeng8/vpn/raw/main/shendeng[Github]-V1.1.5.exe)**
+**:arrow_double_down: [Windows 版本.exe](https://github.com/shendeng8/vpn/raw/refs/heads/main/shendeng%5BGithub%5D-V1.1.5.exe)**
 
-**:arrow_double_down: [macOS 版本.pkg](https://github.com/shendeng8/vpn/raw/main/shendeng-v2.0.4[GitHub].pkg)**
+**:arrow_double_down: [macOS 版本.pkg](https://github.com/shendeng8/vpn/raw/refs/heads/main/shendeng-v2.0.4%5BGitHub%5D.pkg)**
 
 **:arrow_double_down: [永久官网（需翻墙访问）](https://sdvpn.app)** 
 - - - -
