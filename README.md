@@ -29,4 +29,4 @@
 
 **:e-mail: [官网邮箱（自动回复最新官网）](mailto:sdvpn@sdvpn.app)**
 
-**:e-mail: [合作邮箱（商务合作请联系）](mailto:sdhezuo@gmail.com)**
+**:e-mail: [合作邮箱（商务合作请联系）](mailto:hezuo@sdvpn.app)**
