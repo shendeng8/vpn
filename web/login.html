@@ -60,7 +60,7 @@
                 <form class="layui-form" action="">
                     <div class="layui-form-item logo-title">
                         <div class="icon-cp"></div>
-                        <h1 style="font-size: 24px;line-height: 31px;color: #393D41;">登录</h1>
+                        <h1 style="font-size: 24px;line-height: 31px;color: #393D41;">仅限已下载Outline的老用户登录</h1>
                     </div>
 
                     <div class="form-body">
@@ -75,14 +75,14 @@
                         </div>
                     </div>
 
+                    <div id="forgot-password" class="forgot-password">忘记密码?</div>
                     <div class="layui-form-item login">
                         <button lay-submit="" lay-filter="login">登 录</button>
                     </div>
                 </form>
             </div>
             <div class="footer">
-                <div id="forgot-password">忘记密码?</div>
-                <div id="register">注册新账号</div>
+                <button onclick="goNewEnter()">新版web端登录入口>></button>
             </div>
         </div>
     </div>
@@ -93,6 +93,7 @@
     <script src="js/md5.min.js" charset="utf-8"></script>
     <script src="js/utils.js" charset="utf-8"></script>
     <script>
+        let channel = '';
         layui.use(['form'], function() {
             var form = layui.form,
                 layer = layui.layer,
@@ -102,6 +103,7 @@
             let request = GetRequestParams(layui.router().href);
             if (request["channel"] != undefined && request["channel"] != ""){
                 layui.data('channel',{key:"info",value: request["channel"]});
+                channel = request["channel"]
             }
             if(request["expire"] != undefined){
                 $(".box").show()
@@ -123,6 +125,8 @@
                     $("#login-password").attr("type","password");
                 }
             });
+
+            layui.data('warning',{key:"info",value: 0});
 
             const container = document.querySelector(".marquee-container");
             const text = document.querySelector(".marquee-text");
@@ -181,6 +185,10 @@
                 return false;
             });
         });
+
+        function goNewEnter(){
+            location.href= 'https://shendeng8.github.io/vpn/appstore/login.html?channel='+channel;
+        }
     </script>
 </body>
 

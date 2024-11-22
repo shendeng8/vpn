@@ -1,6 +1,4 @@
-// var API_URL = "http://127.0.0.1:23236/api/web";
-//https://api.shmaojie56.com
-var API_URL = "https://api.shmaojie56.com/api/web";
+var API_URL = "https://api.zqchs.com/api/web";
 
 function setCookie(name,auth) {
     let exp = new Date();
