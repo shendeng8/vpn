@@ -105,6 +105,20 @@
         </ul>
       </div>
     </div>
+    <div>
+    </div>
+    <div class="show">
+      <div>
+        <button class="close cancel1"><img src="images/close.png"/></button>
+        <div class="title">提示</div>
+        <div class="desc">你的账号暂无可用时长，请购买后再使用！</div>
+
+        <div class="footer2">
+          <button class="cancel cancel1">取消</button>
+          <button class="buy">购买会员</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -114,6 +128,7 @@
     var $ = layui.jquery,
             form = layui.form,
             table = layui.table,
+            layer = layui.layer,
             miniPage = layui.miniPage;
 
     let request = GetRequestParams(layui.router().href);
@@ -181,26 +196,27 @@
         "method": "GET",
         "url": `${API_URL}/user/info`,
       }).then((json) => {
-        if (loadIndex != undefined) {
+        if(loadIndex != undefined){
           layer.close(loadIndex);
         }
         if (json.code == 200) {
-          let timestamp = parseInt(new Date().getTime() / 1000);
+          userInfo = json.data;
+          let timestamp = parseInt(new Date().getTime()/1000);
           json.data.cache_ts = timestamp;
-          layui.sessionData('user', {key: "userInfo", value: json.data});
+          layui.sessionData('user',{key:"userInfo",value: json.data});
           resetUser(json.data);
-        } else if (json.code == 4003) {
+        } else if(json.code == 4003){
           layer.msg(json.msg, {
             time: 1000
-          }, function () {
-            layui.sessionData('user', {key: "userInfo", remove: true})
+          }, function() {
+            layui.sessionData('user',{key:"userInfo",remove: true})
             window.location = 'login.html';
           });
-        } else {
+        }else {
           layer.msg(json.msg);
         }
       }, (e) => {
-        if (loadIndex != undefined) {
+        if(loadIndex != undefined){
           layer.close(loadIndex);
         }
         layer.msg(e.errorType);
@@ -208,9 +224,9 @@
     }
 
     $(".layuimini-main-user .logout").on('click', function () {
-      layui.data("token", null);
-      layui.sessionData('user', null);
-      layui.data('route', null);
+      layui.data("token",null);
+      layui.sessionData('user',null);
+      layui.data('route',null);
 
       layer.msg('退出登录成功', function () {
         window.location = 'login.html';
@@ -219,10 +235,10 @@
 
     $(".layuimini-main-user .go-buy").on('click', function () {
       let isSvip = 0;
-      if (!$(this).hasClass('vip-bg')) {
+      if(!$(this).hasClass('vip-bg')){
         isSvip = 1;
       }
-      layui.sessionData('buy_tab', {key: "is_svip", value: isSvip});
+      layui.sessionData('buy_tab', {key:"is_svip",value: isSvip});
       miniPage.hashChange('buy.html');
     });
 
@@ -230,19 +246,33 @@
       miniPage.hashChange("update_password.html");
     });
 
-    $("ul li").on('click', function () {
-      miniPage.hashChange('help.html');
+    $("ul li").on('click', function (){
+      let timestamp=parseInt(new Date().getTime()/1000);
+      if(userInfo.expire_time > timestamp){
+        miniPage.hashChange('help.html');
+        return false
+      }else{
+       $(".layuimini-main-user .show").show();
+      }
     })
 
-    for (let i = 1; i <= 7; i++) {
-      if (i == 2 || i == 5 || i == 6) {
-        $("#" + i).find(".route-detail").text((Math.floor(Math.random() * (100 - 80 + 1)) + 70) + "ms")
-      } else {
-        $("#" + i).find(".route-detail").text((Math.floor(Math.random() * (80 - 25 + 1)) + 25) + "ms")
+    $(".layuimini-main-user .show .cancel1").on('click', function (){
+      $(".layuimini-main-user .show").hide()
+    })
+    $(".layuimini-main-user .show .buy").on('click', function (){
+      $(".layuimini-main-user .show").hide();
+      miniPage.hashChange('buy.html');
+    })
+
+    for (let i=1;i<=7;i++){
+      if(i==2 || i==5 || i==6){
+        $("#"+i).find(".route-detail").text((Math.floor(Math.random() * (100 - 80 + 1)) + 70)+"ms")
+      }else{
+        $("#"+i).find(".route-detail").text((Math.floor(Math.random() * (80 - 25 + 1)) + 25)+"ms")
       }
     }
 
-    $(".gotoHelp").on('click', function () {
+    $(".gotoHelp").on('click', function (){
       miniPage.hashChange('help.html');
     })
     form.render();
