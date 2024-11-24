@@ -4,7 +4,7 @@
 
 **:arrow_double_down: [Android 版本.apk](https://github.com/shendeng8/vpn/raw/main/shendeng-v3.3.1-30.apk)**
 
-**:arrow_double_down: [iOS网页版(建议优选海外商店下载）](https://shendeng8.github.io/vpn/appstore/login.html?channel=GitHub)** 
+**:arrow_double_down: [iOS网页版(建议优选海外商店下载）](https://shendeng8.github.io/vpn/appstore/index.html?channel=GitHub)** 
 
 **:arrow_double_down: [iOS 海外商店版本](https://apps.apple.com/us/app/auto-vpn/id6478515858)**
 
