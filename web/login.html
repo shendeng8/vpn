@@ -144,6 +144,10 @@
 
             layui.data('warning',{key:"info",value: 0});
 
+            $(".login-warning-show .toLoginHelp").on('click', function(){
+                goNewEnter()
+            })
+
             const container = document.querySelector(".marquee-container");
             const text = document.querySelector(".marquee-text");
 
